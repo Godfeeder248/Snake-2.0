@@ -17,26 +17,84 @@ namespace SnakeGame
 
         public const int EASY_SPEED = 1;
         public const int HARD_SPEED= 2;
+        
 
         public Game(String mode)
         {
+            int iteration = 0;
             this.mode = mode;
             theSnake = new List<Segment>();
-            Walls = new List<Segment>();
-        }
 
+            /********************************
+            * Varaibles needed for the Grid *
+            ********************************/
+            const int square = 30;
+            int[,] grid = new int[square, square];
+            int[,] walls = new int[square, square];
+            Random axis = new Random();
+
+            // Création de la grille
+            grid = build_grid(square);
+
+            for(int i=0; i<5; i++)
+            {
+                int x = axis.Next(0, square);
+                int y = axis.Next(0, square);
+                Grow_Snake(x, y);
+            }
+
+            for (int i = 0; i < 10; i++)
+                Build_Wall(square, grid);
+            Put_fruit(square, grid);
+            foreach (Segment S in theSnake)
+                grid[S.get_posX(), S.get_posY()] = S.segType;
+
+            show_grid(grid, square);
+        }
         public void Grow_Snake(int x, int y) //adds a segment to the snake when it eats a fruit.
         {
             theSnake.Add(new Segment(x,y,Segment.SNAKE_BODY));
-
         }
-
-        public void Build_Wall()
+        public void Build_Wall(int range, int[,] grid) //adds a wall on the list of wall when the snake eats a fruit
         {
-            Random x = new Random();
-            Random y = new Random();
-            Walls.Add(new Segment(x.Next(1,61),y.Next(1,61),Segment.WALL));
-
+            Random axis = new Random();
+            int x = axis.Next(0, range);
+            int y = axis.Next(0, range);
+            System.Console.WriteLine("Grid_Wall : " + grid[x, y]);
+            if (grid[x, y] == 0)
+                grid[x, y] = 3;
+            else
+                Build_Wall(range, grid);
+        }
+        public void Put_fruit(int range, int[,] grid) //adds a wall on the list of wall when the snake eats a fruit
+        {
+            Random axis = new Random();
+            int x = axis.Next(0, range);
+            int y = axis.Next(0, range);
+            System.Console.WriteLine("Grid_Fruit : " + grid[x, y]);
+            if (grid[x, y] == 0)
+                grid[x, y] = 2;
+            else
+                Put_fruit(range, grid);
+        }
+        public int[,] build_grid(int range)
+        {
+            int[,] grid = new int[range, range];
+            for (int i = 0; i < range; i++)
+                for(int j=0; j< range; j++)
+                    grid[i, j] = 0;
+            return grid;
+        }
+        public void show_grid(int[,] grid, int square)
+        {
+            for (int i = 0; i < square; i++)
+            {
+                for (int j = 0; j < square; j++)
+                {
+                    System.Console.Write(grid[i, j].ToString() + " ");
+                }
+                System.Console.WriteLine();
+            }
         }
     }
 }
