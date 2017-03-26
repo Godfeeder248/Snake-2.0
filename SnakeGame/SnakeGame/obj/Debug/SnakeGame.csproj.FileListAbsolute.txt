@@ -9,3 +9,13 @@ C:\Users\Lucas\Documents\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Prope
 C:\Users\Lucas\Documents\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.GenerateResource.Cache
 C:\Users\Lucas\Documents\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
 C:\Users\Lucas\Documents\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe.config
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\bin\Debug\SnakeGame.pdb
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csprojResolveAssemblyReference.cache
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.GameWindow.resources
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Menu.resources
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Properties.Resources.resources
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.GenerateResource.Cache

@@ -16,16 +16,17 @@ namespace SnakeGame
         void EasyButton_Click(Object sender,
                            EventArgs e)
         {
+            
             GameWindow GameEasy = new GameWindow("EASY");
             GameEasy.Show();
-            this.Close();
+           //this.Close();
         }
         void HardButton_Click(Object sender,
                            EventArgs e)
         {
             GameWindow GameHard = new GameWindow("HARD");
             GameHard.Show();
-            this.Close();
+           // this.Close();
         }
     }
 }
