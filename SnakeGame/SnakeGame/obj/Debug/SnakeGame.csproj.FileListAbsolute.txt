@@ -29,3 +29,17 @@ C:\Users\Lucas\Documents\ECE\ING4\C#\Projet\Snake-2.0\SnakeGame\SnakeGame\obj\De
 C:\Users\Lucas\Documents\ECE\ING4\C#\Projet\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Menu.resources
 C:\Users\Lucas\Documents\ECE\ING4\C#\Projet\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Properties.Resources.resources
 C:\Users\Lucas\Documents\ECE\ING4\C#\Projet\Snake-2.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.GenerateResource.Cache
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe.config
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csprojResolveAssemblyReference.cache
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.GameWindow.resources
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Menu.resources
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Properties.Resources.resources
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.ScoreEntryForm.resources
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.ScoreForm.resources
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.GenerateResource.Cache
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\SnakeGame.pdb
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\ScoreLibrary.dll
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\ScoreLibrary.pdb

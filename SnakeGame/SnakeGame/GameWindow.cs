@@ -61,5 +61,18 @@ namespace SnakeGame
             }
         }
 
+        private void buttonScores_Click(object sender, EventArgs e)
+        {
+            ScoreForm score = new ScoreForm();
+
+            score.Show();
+        }
+
+        private void buttonPause_Click_1(object sender, EventArgs e)
+        {
+            ScoreEntryForm SEF = new ScoreEntryForm();
+            SEF.Show();
+        }
+
     }
 }

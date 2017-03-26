@@ -56,14 +56,26 @@
     <Compile Include="Game.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Segment.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="Menu.designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScoreEntryForm.designer.cs">
+      <DependentUpon>ScoreEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScoreForm.designer.cs">
+      <DependentUpon>ScoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Segment.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,7 +94,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
+    <EmbeddedResource Include="ScoreEntryForm.resx">
+      <DependentUpon>ScoreEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScoreForm.resx">
+      <DependentUpon>ScoreForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,6 +115,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScoreLibrary\ScoreLibrary.csproj">
+      <Project>{0e11275a-89a5-4ea9-94d0-0213e150eba5}</Project>
+      <Name>ScoreLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

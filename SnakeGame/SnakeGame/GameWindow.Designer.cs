@@ -38,7 +38,7 @@
             // buttonNewGame
             // 
             this.buttonNewGame.Location = new System.Drawing.Point(63, 388);
-            this.buttonNewGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonNewGame.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNewGame.Name = "buttonNewGame";
             this.buttonNewGame.Size = new System.Drawing.Size(80, 32);
             this.buttonNewGame.TabIndex = 0;
@@ -48,22 +48,24 @@
             // buttonScores
             // 
             this.buttonScores.Location = new System.Drawing.Point(264, 388);
-            this.buttonScores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonScores.Margin = new System.Windows.Forms.Padding(2);
             this.buttonScores.Name = "buttonScores";
             this.buttonScores.Size = new System.Drawing.Size(68, 32);
             this.buttonScores.TabIndex = 1;
             this.buttonScores.Text = "Scores";
             this.buttonScores.UseVisualStyleBackColor = true;
+            this.buttonScores.Click += new System.EventHandler(this.buttonScores_Click);
             // 
             // buttonPause
             // 
             this.buttonPause.Location = new System.Drawing.Point(456, 388);
-            this.buttonPause.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPause.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.Size = new System.Drawing.Size(66, 32);
             this.buttonPause.TabIndex = 2;
             this.buttonPause.Text = "Pause";
             this.buttonPause.UseVisualStyleBackColor = true;
+            this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click_1);
             // 
             // Snake_window
             // 
@@ -82,7 +84,7 @@
             this.Controls.Add(this.buttonPause);
             this.Controls.Add(this.buttonScores);
             this.Controls.Add(this.buttonNewGame);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameWindow";
             this.Text = "Snake Game";
             ((System.ComponentModel.ISupportInitialize)(this.Snake_window)).EndInit();

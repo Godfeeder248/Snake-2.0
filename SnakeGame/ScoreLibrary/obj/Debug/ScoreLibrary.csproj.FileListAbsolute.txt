@@ -1,0 +1,4 @@
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-2.0\SnakeGame\ScoreLibrary\bin\Debug\ScoreLibrary.dll
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-2.0\SnakeGame\ScoreLibrary\bin\Debug\ScoreLibrary.pdb
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-2.0\SnakeGame\ScoreLibrary\obj\Debug\ScoreLibrary.dll
+C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-2.0\SnakeGame\ScoreLibrary\obj\Debug\ScoreLibrary.pdb
