@@ -12,28 +12,24 @@ namespace SnakeGame
 {
     public class Game: Panel
     {
-        private String mode { get; set; }
-        private List<Segment> Walls { get; set; }
-        private List<Segment> theSnake { get; set; }
+        public String mode { get; set; }
+        public List<Segment> Walls { get; set; }
+        public List<Segment> theSnake { get; set; }
         public static System.Windows.Forms.Timer myTimer;
 
         public const int EASY_SPEED = 2;
         public const int HARD_SPEED= 1;
 
+        private const int square = 30;
+        public int[,] grid = new int[square, square];
+
         public char key;
 
         public Game(String mode)
         {
-            int iteration = 0;
             this.mode = mode;
             theSnake = new List<Segment>();
-
-            /********************************
-            * Varaibles needed for the Grid *
-            ********************************/
-            const int square = 30;
-            int[,] grid = new int[square, square];
-            int[,] walls = new int[square, square];
+            
             Random axis = new Random();
 
             // Création de la grille
