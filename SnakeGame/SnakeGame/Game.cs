@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using static SnakeGame.GameWindow;
 
 /// <summary>
 ///  10x10 px
@@ -16,13 +17,20 @@ namespace SnakeGame
         public List<Segment> Walls { get; set; }
         public List<Segment> theSnake { get; set; }
         public List<Segment> Fruits { get; set; }
-        public static System.Windows.Forms.Timer myTimer;
+        //public static System.Windows.Forms.Timer myTimer;
 
+<<<<<<< HEAD
         public int last_posX;
         public int last_posY;
 
         public const int EASY_SPEED = 2;
         public const int HARD_SPEED= 1;
+=======
+       // public const int EASY_SPEED = 2;
+       // public const int HARD_SPEED= 1;
+
+        public int direction = RIGHT;
+>>>>>>> 85cbe92000089b79ea3cec5201c6b25f10f7e910
 
         public const int square = 20;
 
@@ -50,8 +58,13 @@ namespace SnakeGame
             }
 
             for (int i = 0; i < 10; i++)
+<<<<<<< HEAD
             Build_Wall(square);
             Put_fruit(square);
+=======
+                Build_Wall(square, grid);
+                Put_fruit(square, grid);
+>>>>>>> 85cbe92000089b79ea3cec5201c6b25f10f7e910
             foreach (Segment S in theSnake)
                 grid[S.get_posX(), S.get_posY()] = S.segType;
 
@@ -59,62 +72,60 @@ namespace SnakeGame
 
 
 
-            /**********
-             * Timer **
-             * *******/
-
-
-            myTimer = new System.Windows.Forms.Timer();
-
-            /* Adds the event and the event handler for the method that will 
-         process the timer event to the timer. */
-            myTimer.Tick += new EventHandler(TimerEventProcessor);
-
-            // Sets the timer interval to 2 seconds if mode is EASY, 1 second if mode is HARD.
-            switch (mode)
-            {
-                case "EASY":
-                   myTimer.Interval = (int)((float)(1000) * (EASY_SPEED));
-                    break;
-                case "HARD":
-                    myTimer.Interval = (int)((float)(1000) * (HARD_SPEED));
-                    break;
-            }
-
-
-            myTimer.Start();
           
         }
 
-        // This is the method to run when the timer is raised.
-        private static void TimerEventProcessor(Object myObject,
-                                                EventArgs myEventArgs)
+
+        public void Move_Snake()
         {
-            //Console.WriteLine(string.Format("TICK"));
-            myTimer.Stop();
+            switch (direction){
+                case UP:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posX() - 1));
+                        if (S.get_posX() < 0)
+                            S.set_posX(square);
+                    }
+                       
+                    break;
+                case DOWN:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posX() + 1));
+                        if (S.get_posX() == square)
+                            S.set_posX(0);
+                    }
 
-            /*********************************************
-             *  Moves the snake in the direction it is in.
-             *  ******************************************/
-
-            ///// TO DO
-
-
-            // Restarts the timer
-            myTimer.Enabled = true;
-
+                    break;
+                case RIGHT:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posY() + 1));
+                        if (S.get_posY() == square)
+                            S.set_posY(0);
+                    }
+                    break;
+                case LEFT:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posY() - 1));
+                        if (S.get_posY() < 0)
+                            S.set_posY(square);
+                    }
+                    break;
+            }
 
         }
 
-        
+        /*
         public void TickRefresh()
         {
             //Console.WriteLine(string.Format("Boom changement de tick"));
             myTimer.Stop();
 
-            /******************************************************
+            ******************************************************
              *  Moves the snake in the direction the user pressed.
-             *  ***************************************************/
+             *  ***************************************************
 
             ///// TO DO
 
@@ -123,7 +134,7 @@ namespace SnakeGame
             myTimer.Enabled = true;
 
         }
-
+        */
 
 
         public void Grow_Snake(int x, int y) //adds a segment to the snake when it eats a fruit.
