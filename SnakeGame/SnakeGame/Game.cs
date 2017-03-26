@@ -70,6 +70,8 @@ namespace SnakeGame
                     foreach (Segment S in theSnake)
                     {
                         S.set_posX((S.get_posX() - 1));
+                        if (S.get_posX() < 0)
+                            S.set_posX(square);
                     }
                        
                     break;
@@ -77,6 +79,8 @@ namespace SnakeGame
                     foreach (Segment S in theSnake)
                     {
                         S.set_posX((S.get_posX() + 1));
+                        if (S.get_posX() == square)
+                            S.set_posX(0);
                     }
 
                     break;
@@ -84,12 +88,16 @@ namespace SnakeGame
                     foreach (Segment S in theSnake)
                     {
                         S.set_posX((S.get_posY() + 1));
+                        if (S.get_posY() == square)
+                            S.set_posY(0);
                     }
                     break;
                 case LEFT:
                     foreach (Segment S in theSnake)
                     {
                         S.set_posX((S.get_posY() - 1));
+                        if (S.get_posY() < 0)
+                            S.set_posY(square);
                     }
                     break;
             }

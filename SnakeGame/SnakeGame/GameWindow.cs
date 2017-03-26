@@ -63,7 +63,7 @@ namespace SnakeGame
             /*********************************************
              *  Moves the snake in the direction it is in.
              *  ******************************************/
-
+            
             game.Move_Snake();
             game.Refresh();
             ///// TO DO
