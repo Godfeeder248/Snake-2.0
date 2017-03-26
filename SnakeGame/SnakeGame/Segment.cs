@@ -29,7 +29,7 @@ namespace SnakeGame
             this.posX = x;
             this.posY = y;
             this.segType = segType;
-            this.Location = new System.Drawing.Point((x * IMG_SIZE), (y * IMG_SIZE));
+            this.Location = new System.Drawing.Point((y * IMG_SIZE), (x * IMG_SIZE));
             this.Size = new System.Drawing.Size(IMG_SIZE, IMG_SIZE);
         }
 

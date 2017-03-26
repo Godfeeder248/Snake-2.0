@@ -79,21 +79,21 @@ namespace SnakeGame
             foreach(Segment S in game.theSnake)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\snakebody.png");
+                S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
                 game.Controls.Add(S);
             }
 
             foreach (Segment S in game.Walls)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\wall.png");
+                S.Image = Image.FromFile(@"..\..\Images\wall.png");
                 game.Controls.Add(S);
             }
 
             foreach (Segment S in game.Fruits)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\food.png");
+                S.Image = Image.FromFile(@"..\..\Images\food.png");
                 game.Controls.Add(S);
             }
 

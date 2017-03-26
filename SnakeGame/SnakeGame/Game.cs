@@ -18,10 +18,13 @@ namespace SnakeGame
         public List<Segment> Fruits { get; set; }
         public static System.Windows.Forms.Timer myTimer;
 
+        public int last_posX;
+        public int last_posY;
+
         public const int EASY_SPEED = 2;
         public const int HARD_SPEED= 1;
 
-        public const int square = 30;
+        public const int square = 20;
 
         public int[,] grid = new int[square, square];
 
@@ -37,7 +40,7 @@ namespace SnakeGame
             Random axis = new Random();
 
             // Création de la grille
-            grid = build_grid(square);
+            build_grid(square);
 
             for(int i=0; i<5; i++)
             {
@@ -47,8 +50,8 @@ namespace SnakeGame
             }
 
             for (int i = 0; i < 10; i++)
-            Build_Wall(square, grid);
-            Put_fruit(square, grid);
+            Build_Wall(square);
+            Put_fruit(square);
             foreach (Segment S in theSnake)
                 grid[S.get_posX(), S.get_posY()] = S.segType;
 
@@ -126,10 +129,10 @@ namespace SnakeGame
         public void Grow_Snake(int x, int y) //adds a segment to the snake when it eats a fruit.
         {
             theSnake.Add(new Segment(x,y,Segment.SNAKE_BODY));
-            this.Build_Wall(square,grid);
-            this.Put_fruit(square, grid);
+            this.Build_Wall(square);
+            this.Put_fruit(square);
         }
-        public void Build_Wall(int range, int[,] grid) //adds a wall on the list of wall when the snake eats a fruit
+        public void Build_Wall(int range) //adds a wall on the list of wall when the snake eats a fruit
         {
             Random axis = new Random();
             int x = axis.Next(0, range);
@@ -144,9 +147,9 @@ namespace SnakeGame
                 Walls.Add(new Segment(x, y, Segment.WALL));
             }
             else
-                Build_Wall(range, grid);
+                Build_Wall(range);
         }
-        public void Put_fruit(int range, int[,] grid) //adds a wall on the list of wall when the snake eats a fruit
+        public void Put_fruit(int range) //adds a fruit on the list of fruit when the snake eats a fruit
         {
             Random axis = new Random();
             int x = axis.Next(0, range);
@@ -159,15 +162,14 @@ namespace SnakeGame
                 Fruits.Add(new Segment(x, y, Segment.FRUIT));
             }
             else
-                Put_fruit(range, grid);
+                Put_fruit(range);
         }
-        public int[,] build_grid(int range)
+        public void build_grid(int range)
         {
             int[,] grid = new int[range, range];
             for (int i = 0; i < range; i++)
                 for(int j=0; j< range; j++)
                     grid[i, j] = 0;
-            return grid;
         }
         public void show_grid(int[,] grid, int square)
         {
@@ -178,6 +180,25 @@ namespace SnakeGame
                     System.Console.Write(grid[i, j].ToString() + " ");
                 }
                 System.Console.WriteLine();
+            }
+        }
+        public void eat_fruit(int range)
+        {
+            Random rand = new Random();
+            int x = rand.Next(0, range);
+            int y = rand.Next(0, range);
+
+            if (theSnake[0].get_posX() == 2)
+            {
+                if (grid[x, y] == 0)
+                {
+                    Fruits[0].set_posX(x);
+                    Fruits[0].set_posY(y);
+                    Grow_Snake(last_posX, last_posY);
+                    Build_Wall(range);
+                }
+                else
+                    eat_fruit(range);
             }
         }
     }
