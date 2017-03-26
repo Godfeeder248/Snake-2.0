@@ -15,12 +15,14 @@ namespace SnakeGame
         public String mode { get; set; }
         public List<Segment> Walls { get; set; }
         public List<Segment> theSnake { get; set; }
+        public List<Segment> Fruits { get; set; }
         public static System.Windows.Forms.Timer myTimer;
 
         public const int EASY_SPEED = 2;
         public const int HARD_SPEED= 1;
 
-        private const int square = 30;
+        public const int square = 30;
+
         public int[,] grid = new int[square, square];
 
         public char key;
@@ -29,7 +31,9 @@ namespace SnakeGame
         {
             this.mode = mode;
             theSnake = new List<Segment>();
-            
+            Walls = new List<Segment>();
+            Fruits = new List<Segment>();
+
             Random axis = new Random();
 
             // Création de la grille
@@ -43,7 +47,7 @@ namespace SnakeGame
             }
 
             for (int i = 0; i < 10; i++)
-                Build_Wall(square, grid);
+            Build_Wall(square, grid);
             Put_fruit(square, grid);
             foreach (Segment S in theSnake)
                 grid[S.get_posX(), S.get_posY()] = S.segType;
@@ -83,7 +87,7 @@ namespace SnakeGame
         private static void TimerEventProcessor(Object myObject,
                                                 EventArgs myEventArgs)
         {
-            Console.WriteLine(string.Format("TICK"));
+            //Console.WriteLine(string.Format("TICK"));
             myTimer.Stop();
 
             /*********************************************
@@ -102,7 +106,7 @@ namespace SnakeGame
         
         public void TickRefresh()
         {
-            Console.WriteLine(string.Format("Boom changement de tick"));
+            //Console.WriteLine(string.Format("Boom changement de tick"));
             myTimer.Stop();
 
             /******************************************************
@@ -122,15 +126,23 @@ namespace SnakeGame
         public void Grow_Snake(int x, int y) //adds a segment to the snake when it eats a fruit.
         {
             theSnake.Add(new Segment(x,y,Segment.SNAKE_BODY));
+            this.Build_Wall(square,grid);
+            this.Put_fruit(square, grid);
         }
         public void Build_Wall(int range, int[,] grid) //adds a wall on the list of wall when the snake eats a fruit
         {
             Random axis = new Random();
             int x = axis.Next(0, range);
             int y = axis.Next(0, range);
+
             System.Console.WriteLine("Grid_Wall : " + grid[x, y]);
+
+
             if (grid[x, y] == 0)
+            {
                 grid[x, y] = 3;
+                Walls.Add(new Segment(x, y, Segment.WALL));
+            }
             else
                 Build_Wall(range, grid);
         }
@@ -140,8 +152,12 @@ namespace SnakeGame
             int x = axis.Next(0, range);
             int y = axis.Next(0, range);
             System.Console.WriteLine("Grid_Fruit : " + grid[x, y]);
+
             if (grid[x, y] == 0)
+            {
                 grid[x, y] = 2;
+                Fruits.Add(new Segment(x, y, Segment.FRUIT));
+            }
             else
                 Put_fruit(range, grid);
         }

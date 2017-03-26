@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 
@@ -11,11 +12,7 @@ namespace SnakeGame
 
         public GameWindow(String mode)
         {
-            InitializeComponent();
-
-            game = new Game(mode);
-
-
+           InitializeComponent(mode);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -74,5 +71,32 @@ namespace SnakeGame
             SEF.Show();
         }
 
+        //private void panel1_Paint(object sender, PaintEventArgs e)
+        private void game_Paint(object sender, PaintEventArgs e)
+        {
+            game.BackColor = Color.Black;
+
+            foreach(Segment S in game.theSnake)
+            {
+                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
+                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\snakebody.png");
+                game.Controls.Add(S);
+            }
+
+            foreach (Segment S in game.Walls)
+            {
+                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
+                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\wall.png");
+                game.Controls.Add(S);
+            }
+
+            foreach (Segment S in game.Fruits)
+            {
+                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
+                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\food.png");
+                game.Controls.Add(S);
+            }
+
+        }
     }
 }

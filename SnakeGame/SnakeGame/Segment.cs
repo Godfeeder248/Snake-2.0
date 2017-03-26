@@ -10,6 +10,7 @@ namespace SnakeGame
     public class Segment : PictureBox
     {
         private int posX;
+
         private int posY;
 
         public int last_posX { get; set; }
@@ -21,11 +22,15 @@ namespace SnakeGame
         public const int WALL = 3;
         public const int SNAKE_HEAD = 4;
 
+        public const int IMG_SIZE = 20;
+
         public Segment(int x, int y, int segType)
         {
             this.posX = x;
             this.posY = y;
             this.segType = segType;
+            this.Location = new System.Drawing.Point((x * IMG_SIZE), (y * IMG_SIZE));
+            this.Size = new System.Drawing.Size(IMG_SIZE, IMG_SIZE);
         }
 
         public int get_posX()
