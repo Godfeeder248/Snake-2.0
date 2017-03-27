@@ -70,7 +70,7 @@
             //
             this.panel1.Location = new System.Drawing.Point(12, 22);
             this.panel1.Name = "game";
-            this.panel1.Size = new System.Drawing.Size(700, 700);
+            this.panel1.Size = new System.Drawing.Size(660, 660);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.game_Paint);
             // 
