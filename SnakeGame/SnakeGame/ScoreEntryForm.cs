@@ -22,10 +22,6 @@ namespace SnakeGame
 
         #region Custom events
 
-        public delegate void NewScoreEventHandler(Score NewScore);
-
-        public event NewScoreEventHandler NewScoreEvent;
-
         #endregion Custom events
 
         #region Constructor(s)
@@ -42,22 +38,24 @@ namespace SnakeGame
 
         private void Valider_Click(object sender, EventArgs e)
         {
+           
             try
             {
-                this.CreatedScore =
-                    new Score(this.PseudoEntry.Text, Int32.Parse(this.labelScore.Text));
-                if (this.NewScoreEvent!= null)
-                {
-                    this.NewScoreEvent(this.CreatedScore);
-                }
+                CreatedScore =  new Score(PseudoEntry.Text, Int32.Parse(labelScore.Text));
+
+                Score.LoadData(ScoreForm.SCORE_FILENAME);
+                Score.RegisterScore(CreatedScore);
+
+                
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Error creating the new score");
                 Debug.WriteLine(ex.ToString());
             }
-            
 
+            Score.SaveData(ScoreForm.SCORE_FILENAME);
+            
             this.Close();
 
         }

@@ -83,7 +83,7 @@ namespace SnakeGame
         private static void TimerEventProcessor(Object myObject,
                                                 EventArgs myEventArgs)
         {
-            Console.WriteLine(string.Format("TICK"));
+            //Console.WriteLine(string.Format("TICK"));
             myTimer.Stop();
 
             /*********************************************
@@ -102,7 +102,7 @@ namespace SnakeGame
         
         public void TickRefresh()
         {
-            Console.WriteLine(string.Format("Boom changement de tick"));
+           // Console.WriteLine(string.Format("Boom changement de tick"));
             myTimer.Stop();
 
             /******************************************************

@@ -15,9 +15,7 @@ namespace SnakeGame
         public Menu()
         {
             InitializeComponent();
-
-           // buttonEasy.Click += new EventHandler(this.EasyButton_Click);
-           // buttonHard.Click += new EventHandler(this.HardButton_Click);
+        
         }
 
         private void buttonEasy_Click(object sender, EventArgs e)
@@ -35,4 +33,5 @@ namespace SnakeGame
            // this.Close();
         }
     }
+    
 }

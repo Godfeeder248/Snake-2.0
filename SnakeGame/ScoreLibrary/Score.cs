@@ -46,6 +46,7 @@ namespace ScoreLibrary
                     using (XmlReader xr = XmlReader.Create(filename))
                     {
                         score = (List<Score>)xs.Deserialize(xr);
+                        
                     }
                 }
             }

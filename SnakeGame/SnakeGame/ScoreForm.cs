@@ -16,7 +16,7 @@ namespace SnakeGame
     {
         #region Constants
 
-        private const string SCORE_FILENAME = @"..\..\..\data\scores.xml";
+        public const string SCORE_FILENAME = @"..\..\..\data\scores.xml";
 
         #endregion Constants
 
@@ -50,18 +50,18 @@ namespace SnakeGame
         }
 
         private void NewScoreEvent(Score score)
-        {
-            Debug.WriteLine("Register a new score");
+        {    
+
             Score.RegisterScore(score);
             this.ViewUpdate();
         }
 
 
-        private void ViewUpdate()
+        public void ViewUpdate()
         {
             // Clear display
             this.listViewScore.Items.Clear();
-
+       
             // Reload data display
             foreach (Score score in Score.Scores)
             {
