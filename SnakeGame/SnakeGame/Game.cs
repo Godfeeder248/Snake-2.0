@@ -63,7 +63,7 @@ namespace SnakeGame
             Put_fruit();
 
 
-            show_grid(grid, square);
+            show_grid();
             /***************************************
                   A ENLEVER EN FIN DE CODAGE :P
             ***************************************/
@@ -71,48 +71,42 @@ namespace SnakeGame
         }
         public void Move_Snake()
         {
-            System.Console.WriteLine(direction);
+            show_grid();
             switch (direction){
                 case UP:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posY((S.get_posY() - 1));
-                        if (S.get_posY() < 0)
-                            S.set_posY(square-1);
+                        S.set_posX((S.get_posX() - 1));
+                        if (S.get_posX() < 0)
+                            S.set_posX(square);
                     }
                        
                     break;
                 case DOWN:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posY((S.get_posY() + 1));
-                        if (S.get_posY() == square)
-                            S.set_posY(0);
+                        S.set_posX((S.get_posX() + 1));
+                        if (S.get_posX() == square)
+                            S.set_posX(0);
                     }
 
                     break;
                 case RIGHT:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posX((S.get_posX() + 1));
-                        if (S.get_posX() == square)
-                            S.set_posX(0);
+                        S.set_posY((S.get_posY() + 1));
+                        if (S.get_posY() == square)
+                            S.set_posY(0);
                     }
                     break;
                 case LEFT:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posX((S.get_posX() - 1));
-                        if (S.get_posX() < 0)
-                            S.set_posX(square-1);
+                        S.set_posY((S.get_posY() - 1));
+                        if (S.get_posY() < 0)
+                            S.set_posY(square);
                     }
                     break;
-            }
-            foreach (Segment S in theSnake)
-            {
-                iteration++;
-                grid[S.get_posX(), S.get_posY()] = S.segType;
-                System.Console.WriteLine(iteration + " - x = " + S.get_posX() + " - y = " + S.get_posY());
             }
             iteration = 0;
         }
@@ -126,10 +120,7 @@ namespace SnakeGame
             Random axis = new Random();
             int x = axis.Next(0, square);
             int y = axis.Next(0, square);
-
-            System.Console.WriteLine("Grid_Wall : " + grid[x, y]);
-
-
+            
             if (grid[x, y] == 0)
             {
                 grid[x, y] = 3;
@@ -143,7 +134,6 @@ namespace SnakeGame
             Random axis = new Random();
             int x = axis.Next(0, square);
             int y = axis.Next(0, square);
-            System.Console.WriteLine("Grid_Fruit : " + grid[x, y]);
 
             if (grid[x, y] == 0)
             {
@@ -160,7 +150,7 @@ namespace SnakeGame
                 for(int j=0; j< square; j++)
                     grid[i, j] = 0;
         }
-        public void show_grid(int[,] grid, int square)
+        public void show_grid()
         {
             for (int i = 0; i < square; i++)
             {
@@ -170,6 +160,8 @@ namespace SnakeGame
                 }
                 System.Console.WriteLine();
             }
+            System.Console.WriteLine();
+            System.Console.WriteLine();
         }
         public void eat_fruit()
         {
@@ -177,20 +169,44 @@ namespace SnakeGame
             int x = rand.Next(0, square);
             int y = rand.Next(0, square);
 
+<<<<<<< HEAD
             if ((grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2))
             {
                 if (grid[x, y] == 0)
+=======
+            if(theSnake[0].get_posX()<square && theSnake[0].get_posY()<square)
+                if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2)
+>>>>>>> fdd98644aa2eacc736596657f69292a8c0e66035
                 {
-                    Fruits[0].set_posX(x);
-                    Fruits[0].set_posY(y);
-                    Grow_Snake(last_posX, last_posY);
-                    score = score + 100;
+                    System.Console.WriteLine("YEAH !");
+                    if (grid[x, y] == 0)
+                    {
+                        Fruits[0].set_posX(x);
+                        Fruits[0].set_posY(y);
+                        Grow_Snake(last_posX, last_posY);
+                        score = score + 100;
 
-                    Build_Wall();
+                        Build_Wall();
 
+                    }
+                    else
+                        eat_fruit();
                 }
-                else
-                    eat_fruit();
+            last_posX = theSnake[theSnake.Count - 1].get_posX();
+            last_posY = theSnake[theSnake.Count - 1].get_posY();
+        }
+        public void update_grid()
+        {
+            for (int i = 0; i < square; i++)
+                for (int j = 0; j < square; j++)
+                    grid[i, j] = 0;
+            foreach(Segment W in Walls)
+            {
+                grid[W.get_posX(), W.get_posY()] = 3;
+            }
+            foreach(Segment F in Fruits)
+            {
+                grid[F.get_posX(), F.get_posY()] = 2;
             }
         }
         public void die()
@@ -206,9 +222,10 @@ namespace SnakeGame
         {
             score = score + 1;
             Move_Snake();
+            update_grid();
             eat_fruit();
 
-            die();
+            //die();
         }
     }
 }
