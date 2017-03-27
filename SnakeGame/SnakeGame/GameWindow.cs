@@ -37,7 +37,7 @@ namespace SnakeGame
 
         public GameWindow(String mode)
         {
-            InitializeComponent(mode);
+            InitializeComponent();
 
 
             this.game = new Game(mode);
@@ -79,7 +79,10 @@ namespace SnakeGame
             /*********************************************
              *  Moves the snake in the direction it is in.
              *  ******************************************/
-            game.update_snake();
+            if (game.game_over == false)
+                game.update_snake();
+            else
+                myTimer.Stop();
             //game.Move_Snake();
             //game.Refresh();
             panel1.Invalidate();
@@ -182,7 +185,7 @@ namespace SnakeGame
         private void game_Paint(object sender, PaintEventArgs e)
         {
             panel1.BackColor = Color.Black;
-            
+            lblScore.Text = "Score : " + game.score.ToString();
             g = e.Graphics;
             // g.Clear(Color.Black);
 
@@ -191,16 +194,16 @@ namespace SnakeGame
             switch (game.direction)
             {
                 case UP:
-                    g.DrawImage(snakeheadup, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    g.DrawImage(snakeheadup, (game.theSnake[0].get_posY() * 20), (game.theSnake[0].get_posX() * 20));
                     break;
                 case DOWN:
-                    g.DrawImage(snakeheaddown, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    g.DrawImage(snakeheaddown, (game.theSnake[0].get_posY() * 20), (game.theSnake[0].get_posX() * 20));
                     break;
                 case LEFT:
-                    g.DrawImage(snakeheadleft, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    g.DrawImage(snakeheadleft, (game.theSnake[0].get_posY() * 20), (game.theSnake[0].get_posX() * 20));
                     break;
                 case RIGHT:
-                    g.DrawImage(snakeheadright, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    g.DrawImage(snakeheadright, (game.theSnake[0].get_posY() * 20), (game.theSnake[0].get_posX() * 20));
                     break;
             }
 
@@ -228,8 +231,10 @@ namespace SnakeGame
                 g.DrawImage(fruit, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
-            for (int i = 0; i < 25; i++) { 
-                for (int j = 0; j < 25; j++) { 
+            for (int i = 0; i < 25; i++)
+            {
+                for (int j = 0; j < 25; j++)
+                {
                     if (game.grid[i, j] == 0)
                     {
                         g.DrawImage(bg, (i * 20), (j * 20));

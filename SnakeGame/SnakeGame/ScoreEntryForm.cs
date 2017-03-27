@@ -34,7 +34,9 @@ namespace SnakeGame
 
         public ScoreEntryForm(int score)
         {
-            labelScore.Text = score.ToString();
+            InitializeComponent();
+            if (labelScore != null)
+                labelScore.Text = score.ToString();
         }
 
         #endregion Constructor(s)

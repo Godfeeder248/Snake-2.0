@@ -27,13 +27,17 @@ namespace SnakeGame
 
         public const int square = 25;
 
-        public int[,] grid = new int[square, square];
+        public int[,] grid = new int[square+1, square+1];
 
         public char key;
 
         public int iteration = 0;
 
         public int score = 0;
+
+        public bool game_over;
+
+        Random axis = new Random();
 
         public Game(String mode)
         {
@@ -42,7 +46,8 @@ namespace SnakeGame
             Walls = new List<Segment>();
             Fruits = new List<Segment>();
 
-            Random axis = new Random();
+            game_over = false;
+
 
             // Création de la grille
             build_grid();
@@ -71,44 +76,41 @@ namespace SnakeGame
         }
         public void Move_Snake()
         {
-            show_grid();
+            //show_grid();
+            foreach(Segment S in theSnake)
+            {
+                S.last_posX = S.get_posX();
+                S.last_posY = S.get_posY();
+            }
             switch (direction){
                 case UP:
-                    foreach (Segment S in theSnake)
-                    {
-                        S.set_posX((S.get_posX() - 1));
-                        if (S.get_posX() < 0)
-                            S.set_posX(square);
-                    }
+                    theSnake[0].set_posX((theSnake[0].get_posX() - 1));
+                    if (theSnake[0].get_posX() < 0)
+                        theSnake[0].set_posX(square);
                        
                     break;
                 case DOWN:
-                    foreach (Segment S in theSnake)
-                    {
-                        S.set_posX((S.get_posX() + 1));
-                        if (S.get_posX() == square)
-                            S.set_posX(0);
-                    }
+                    theSnake[0].set_posX((theSnake[0].get_posX() + 1));
+                    if (theSnake[0].get_posX() == square)
+                        theSnake[0].set_posX(0);
 
                     break;
                 case RIGHT:
-                    foreach (Segment S in theSnake)
-                    {
-                        S.set_posY((S.get_posY() + 1));
-                        if (S.get_posY() == square)
-                            S.set_posY(0);
-                    }
+                    theSnake[0].set_posY((theSnake[0].get_posY() + 1));
+                    if (theSnake[0].get_posY() == square)
+                        theSnake[0].set_posY(0);
                     break;
                 case LEFT:
-                    foreach (Segment S in theSnake)
-                    {
-                        S.set_posY((S.get_posY() - 1));
-                        if (S.get_posY() < 0)
-                            S.set_posY(square);
-                    }
+                    theSnake[0].set_posY((theSnake[0].get_posY() - 1));
+                    if (theSnake[0].get_posY() < 0)
+                        theSnake[0].set_posY(square);
                     break;
             }
-            iteration = 0;
+            for(int i =1; i<theSnake.Count; i++)
+            {
+                theSnake[i].set_posX(theSnake[i - 1].last_posX);
+                theSnake[i].set_posY(theSnake[i - 1].last_posY);
+            }
         }
         
         public void Grow_Snake(int x, int y) //adds a segment to the snake when it eats a fruit.
@@ -117,7 +119,6 @@ namespace SnakeGame
         }
         public void Build_Wall() //adds a wall on the list of wall when the snake eats a fruit
         {
-            Random axis = new Random();
             int x = axis.Next(0, square);
             int y = axis.Next(0, square);
             
@@ -205,21 +206,21 @@ namespace SnakeGame
         }
         public void die()
         {
-            if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] != 0 ||
-                grid[theSnake[0].get_posX(), theSnake[0].get_posY()] != 2)
+            if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 3)
             {
                 ScoreEntryForm SEF = new ScoreEntryForm(score);
                 SEF.Show();
+                game_over = true;
             }
         }
         public void update_snake()
         {
             score = score + 1;
-            Move_Snake();
             update_grid();
+            Move_Snake();
             eat_fruit();
 
-            //die();
+            die();
         }
     }
 }
