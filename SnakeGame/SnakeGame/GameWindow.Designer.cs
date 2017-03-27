@@ -44,7 +44,7 @@
             this.buttonNewGame.TabIndex = 0;
             this.buttonNewGame.Text = "New Game";
             this.buttonNewGame.UseVisualStyleBackColor = true;
-            this.buttonScores.Click += new System.EventHandler(this.buttonNew_Click);
+            this.buttonNewGame.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // buttonScores
             // 
