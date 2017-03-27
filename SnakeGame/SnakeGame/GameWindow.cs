@@ -17,8 +17,8 @@ namespace SnakeGame
         public const int RIGHT = 3;
         public const int LEFT = 4;
 
-        public const int EASY_SPEED = 1;
-        public const double HARD_SPEED = 0.5;
+        public const int EASY_SPEED = 10;
+        public const double HARD_SPEED = 5;
 
         Graphics g;
         
@@ -55,10 +55,10 @@ namespace SnakeGame
             switch (mode)
             {
                 case "EASY":
-                    myTimer.Interval = (int)((float)(100) * (EASY_SPEED));
+                    myTimer.Interval = (int)((float)(10) * (EASY_SPEED));
                     break;
                 case "HARD":
-                    myTimer.Interval = (int)((float)(100) * (HARD_SPEED));
+                    myTimer.Interval = (int)((float)(10) * (HARD_SPEED));
                     break;
             }
 
