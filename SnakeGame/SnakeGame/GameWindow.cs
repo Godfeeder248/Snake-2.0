@@ -163,7 +163,7 @@ namespace SnakeGame
             panel1.BackColor = Color.Black;
 
             g = e.Graphics;
-            g.Clear(Color.Black);
+           // g.Clear(Color.Black);
 
             foreach (Segment S in game.theSnake)
             {
