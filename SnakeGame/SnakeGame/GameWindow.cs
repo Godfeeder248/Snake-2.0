@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 using ScoreLibrary;
-
+using System.Linq;
 
 namespace SnakeGame
 {
@@ -163,9 +163,27 @@ namespace SnakeGame
             panel1.BackColor = Color.Black;
 
             g = e.Graphics;
-           // g.Clear(Color.Black);
+            // g.Clear(Color.Black);
 
-            foreach (Segment S in game.theSnake)
+            //game.theSnake[0];
+
+            switch (game.direction)
+            {
+                case UP:
+                    g.DrawImage(snakeheadup, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    break;
+                case DOWN:
+                    g.DrawImage(snakeheaddown, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    break;
+                case LEFT:
+                    g.DrawImage(snakeheadleft, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    break;
+                case RIGHT:
+                    g.DrawImage(snakeheadright, (game.theSnake[0].get_posX() * 20), (game.theSnake[0].get_posY() * 20));
+                    break;
+            }
+
+            foreach (Segment S in (game.theSnake).Skip(1))
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 //S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
