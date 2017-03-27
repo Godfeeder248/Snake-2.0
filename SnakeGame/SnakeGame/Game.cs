@@ -168,6 +168,7 @@ namespace SnakeGame
             Random rand = new Random();
             int x = rand.Next(0, square);
             int y = rand.Next(0, square);
+
             if(theSnake[0].get_posX()<square && theSnake[0].get_posY()<square)
                 if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2)
                 {
