@@ -153,8 +153,29 @@ namespace SnakeGame
 
         private void buttonPause_Click_1(object sender, EventArgs e)
         {
-            // ScoreEntryForm SEF = new ScoreEntryForm();
-            //SEF.Show();
+            myTimer.Stop();
+            Boolean isPaused = true;
+            while (isPaused)
+            {
+                string message = "Game is paused. Start again ?";
+                string caption = "Game Paused";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    isPaused = false;
+                }
+
+            }
+
+            // Restarts the timer
+            myTimer.Enabled = true;
+
         }
 
         //private void panel1_Paint(object sender, PaintEventArgs e)
