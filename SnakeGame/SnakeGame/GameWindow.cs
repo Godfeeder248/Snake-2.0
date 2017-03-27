@@ -22,6 +22,7 @@ namespace SnakeGame
 
         Graphics g;
 
+        Image bg = Image.FromFile(@"..\..\Images\bg.png");
         Image snakebody = Image.FromFile(@"..\..\Images\snakebody.png");
         Image snakeheadup = Image.FromFile(@"..\..\Images\snakeheadtoup.png");
         Image snakeheaddown = Image.FromFile(@"..\..\Images\snakeheadtobottom.png");
@@ -36,7 +37,7 @@ namespace SnakeGame
 
         public GameWindow(String mode)
         {
-           InitializeComponent(mode);
+            InitializeComponent(mode);
 
 
             this.game = new Game(mode);
@@ -78,7 +79,7 @@ namespace SnakeGame
             /*********************************************
              *  Moves the snake in the direction it is in.
              *  ******************************************/
-            
+
             game.Move_Snake();
             //game.Refresh();
             panel1.Invalidate();
@@ -100,7 +101,7 @@ namespace SnakeGame
                     //MessageBox.Show("You pressed R arrow key");
 
                     //game.TickRefresh();
-                    if(game.direction != LEFT)
+                    if (game.direction != LEFT)
                         game.direction = RIGHT;
 
                     return true;
@@ -143,7 +144,7 @@ namespace SnakeGame
         private void buttonScores_Click(object sender, EventArgs e)
         {
             ScoreForm score = new ScoreForm();
-          //  Score.SaveData(ScoreForm.SCORE_FILENAME);
+            //  Score.SaveData(ScoreForm.SCORE_FILENAME);
             Score.LoadData(ScoreForm.SCORE_FILENAME);
             score.ViewUpdate();
 
@@ -152,16 +153,14 @@ namespace SnakeGame
 
         private void buttonPause_Click_1(object sender, EventArgs e)
         {
-           // ScoreEntryForm SEF = new ScoreEntryForm();
+            // ScoreEntryForm SEF = new ScoreEntryForm();
             //SEF.Show();
         }
 
         //private void panel1_Paint(object sender, PaintEventArgs e)
         private void game_Paint(object sender, PaintEventArgs e)
         {
-            myTimer.Stop();
             panel1.BackColor = Color.Black;
-
 
             g = e.Graphics;
             g.Clear(Color.Black);
@@ -187,17 +186,20 @@ namespace SnakeGame
             foreach (Segment S in game.Fruits)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-               // S.Image = Image.FromFile(@"..\..\Images\food.png");
+                // S.Image = Image.FromFile(@"..\..\Images\food.png");
                 System.Console.WriteLine("3");
                 //game.Controls.Add(S);
                 g.DrawImage(fruit, (S.get_posX() * 20), (S.get_posY() * 20));
             }
-            game.Move_Snake();
-            ///// TO DO
 
-            
-            // Restarts the timer
-            myTimer.Enabled = true;
+            for (int i = 0; i < 25; i++) { 
+                for (int j = 0; j < 25; j++) { 
+                    if (game.grid[i, j] == 0)
+                    {
+                        g.DrawImage(bg, (i * 20), (j * 20));
+                    }
+                }
+            }
         }
     }
 }
