@@ -56,10 +56,10 @@ namespace SnakeGame
             switch (mode)
             {
                 case "EASY":
-                    myTimer.Interval = (int)((float)(1000) * (EASY_SPEED));
+                    myTimer.Interval = (int)((float)(100) * (EASY_SPEED));
                     break;
                 case "HARD":
-                    myTimer.Interval = (int)((float)(1000) * (HARD_SPEED));
+                    myTimer.Interval = (int)((float)(100) * (HARD_SPEED));
                     break;
             }
 
@@ -79,8 +79,8 @@ namespace SnakeGame
             /*********************************************
              *  Moves the snake in the direction it is in.
              *  ******************************************/
-
-            game.Move_Snake();
+            game.update_snake();
+            //game.Move_Snake();
             //game.Refresh();
             panel1.Invalidate();
             ///// TO DO
@@ -161,7 +161,7 @@ namespace SnakeGame
         private void game_Paint(object sender, PaintEventArgs e)
         {
             panel1.BackColor = Color.Black;
-
+            
             g = e.Graphics;
            // g.Clear(Color.Black);
 
@@ -169,9 +169,8 @@ namespace SnakeGame
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 //S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
-                System.Console.WriteLine("1");
                 //game.Controls.Add(S);
-                g.DrawImage(snakebody, (S.get_posX() * 20), (S.get_posY() * 20));
+                g.DrawImage(snakebody, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
             foreach (Segment S in game.Walls)
@@ -179,17 +178,15 @@ namespace SnakeGame
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 //S.Image = Image.FromFile(@"..\..\Images\wall.png");
                 //game.Controls.Add(S);
-                System.Console.WriteLine("2");
-                g.DrawImage(wall, (S.get_posX() * 20), (S.get_posY() * 20));
+                g.DrawImage(wall, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
             foreach (Segment S in game.Fruits)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 // S.Image = Image.FromFile(@"..\..\Images\food.png");
-                System.Console.WriteLine("3");
                 //game.Controls.Add(S);
-                g.DrawImage(fruit, (S.get_posX() * 20), (S.get_posY() * 20));
+                g.DrawImage(fruit, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
             for (int i = 0; i < 25; i++) { 
