@@ -17,8 +17,8 @@ namespace SnakeGame
         public const int RIGHT = 3;
         public const int LEFT = 4;
 
-        public const int EASY_SPEED = 2;
-        public const int HARD_SPEED = 1;
+        public const int EASY_SPEED = 1;
+        public const double HARD_SPEED = 0.5;
 
         Graphics g;
 
