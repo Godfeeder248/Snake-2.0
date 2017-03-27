@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
+using ScoreLibrary;
+
 
 namespace SnakeGame
 {
@@ -125,6 +127,9 @@ namespace SnakeGame
         private void buttonScores_Click(object sender, EventArgs e)
         {
             ScoreForm score = new ScoreForm();
+          //  Score.SaveData(ScoreForm.SCORE_FILENAME);
+            Score.LoadData(ScoreForm.SCORE_FILENAME);
+            score.ViewUpdate();
 
             score.Show();
         }
