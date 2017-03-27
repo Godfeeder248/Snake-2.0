@@ -31,7 +31,7 @@
             this.buttonNewGame = new System.Windows.Forms.Button();
             this.buttonScores = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
-            // this.panel1 = new System.Windows.Forms.Panel();
+            //this.panel1 = new System.Windows.Forms.Panel();
             this.game = new Game(mode);
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click_1);
             // 
             // game
-            // 
+            //
             this.game.Location = new System.Drawing.Point(12, 22);
             this.game.Name = "game";
             this.game.Size = new System.Drawing.Size(700, 700);

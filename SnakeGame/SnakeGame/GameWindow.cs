@@ -24,17 +24,15 @@ namespace SnakeGame
         {
            InitializeComponent(mode);
 
-
             /**********
              * Timer **
              * *******/
 
-
             myTimer = new System.Windows.Forms.Timer();
 
             /* Adds the event and the event handler for the method that will 
-         process the timer event to the timer. */
-            myTimer.Tick += new EventHandler(TimerEventProcessor);
+            process the timer event to the timer. */
+            myTimer.Tick += new EventHandler(game_Paint);
 
             // Sets the timer interval to 2 seconds if mode is EASY, 1 second if mode is HARD.
             switch (mode)
@@ -77,44 +75,42 @@ namespace SnakeGame
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            char key;
             switch (keyData)
             {
                 case Keys.Right:
-                    key = 'R';
                     Debug.WriteLine("KeypressedR");
                     //MessageBox.Show("You pressed R arrow key");
 
                     //game.TickRefresh();
-
-                    game.direction = RIGHT;
+                    if(game.direction != LEFT)
+                        game.direction = RIGHT;
 
                     return true;
                 case Keys.Left:
-                    key = 'L';
                     Debug.WriteLine("KeypressedL");
                     //MessageBox.Show("You pressed Left arrow key");
 
                     //game.TickRefresh();
 
-                    game.direction = LEFT;
+                    if (game.direction != RIGHT)
+                        game.direction = LEFT;
 
                     return true;
                 case Keys.Up:
-                    key = 'U';
                     Debug.WriteLine("KeypressedU");
                     //MessageBox.Show("You pressed U arrow key");
 
-                    game.direction = UP;
+                    if (game.direction != DOWN)
+                        game.direction = UP;
 
                     //game.TickRefresh();
 
                     return true;
                 case Keys.Down:
-                    key = 'D';
                     Debug.WriteLine("KeypressedD");
 
-                    game.direction = DOWN;
+                    if (game.direction != UP)
+                        game.direction = DOWN;
                     //MessageBox.Show("You pressed D arrow key");
 
                     //game.TickRefresh();
@@ -140,14 +136,15 @@ namespace SnakeGame
         }
 
         //private void panel1_Paint(object sender, PaintEventArgs e)
-        private void game_Paint(object sender, PaintEventArgs e)
+        private void game_Paint(object sender, EventArgs e)
         {
+            myTimer.Stop();
             game.BackColor = Color.Black;
-
             foreach(Segment S in game.theSnake)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
+                System.Console.WriteLine("1");
                 game.Controls.Add(S);
             }
 
@@ -156,15 +153,21 @@ namespace SnakeGame
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 S.Image = Image.FromFile(@"..\..\Images\wall.png");
                 game.Controls.Add(S);
+                System.Console.WriteLine("2");
             }
 
             foreach (Segment S in game.Fruits)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
                 S.Image = Image.FromFile(@"..\..\Images\food.png");
+                System.Console.WriteLine("3");
                 game.Controls.Add(S);
             }
+            game.Move_Snake();
+            ///// TO DO
 
+            // Restarts the timer
+            myTimer.Enabled = true;
         }
     }
 }
