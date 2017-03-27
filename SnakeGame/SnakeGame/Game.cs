@@ -52,27 +52,9 @@ namespace SnakeGame
             // Création de la grille
             build_grid();
             Grow_Snake(10, 10);
-
-            /***************************************
-                  A ENLEVER EN FIN DE CODAGE :P
-            ***************************************/
-            /*for(int i=0; i<5; i++)
-            {
-                int x = axis.Next(0, square);
-                int y = axis.Next(0, square);
-                Grow_Snake(x, y);
-            }*/
-
-            for (int i = 0; i < 10; i++)
-                Build_Wall();
+            
             Put_fruit();
-
-
-            show_grid();
-            /***************************************
-                  A ENLEVER EN FIN DE CODAGE :P
-            ***************************************/
-
+            
         }
         public void Move_Snake()
         {
@@ -170,14 +152,9 @@ namespace SnakeGame
             int x = rand.Next(0, square);
             int y = rand.Next(0, square);
 
-<<<<<<< HEAD
             if ((grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2))
             {
                 if (grid[x, y] == 0)
-=======
-            if(theSnake[0].get_posX()<square && theSnake[0].get_posY()<square)
-                if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2)
->>>>>>> fdd98644aa2eacc736596657f69292a8c0e66035
                 {
                     System.Console.WriteLine("YEAH !");
                     if (grid[x, y] == 0)
@@ -193,8 +170,9 @@ namespace SnakeGame
                     else
                         eat_fruit();
                 }
-            last_posX = theSnake[theSnake.Count - 1].get_posX();
-            last_posY = theSnake[theSnake.Count - 1].get_posY();
+                last_posX = theSnake[theSnake.Count - 1].get_posX();
+                last_posY = theSnake[theSnake.Count - 1].get_posY();
+            }
         }
         public void update_grid()
         {
@@ -212,11 +190,23 @@ namespace SnakeGame
         }
         public void die()
         {
+            int i = 1;
             if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 3)
             {
                 ScoreEntryForm SEF = new ScoreEntryForm(score);
                 SEF.Show();
                 game_over = true;
+            }
+            while(game_over == false && i != theSnake.Count)
+            {
+                if (theSnake[0].get_posX() == theSnake[i].get_posX() &&
+                    theSnake[0].get_posY() == theSnake[i].get_posY())
+                {
+                    ScoreEntryForm SEF = new ScoreEntryForm(score);
+                    SEF.Show();
+                    game_over = true;
+                }
+                i++;
             }
         }
         public void update_snake()
