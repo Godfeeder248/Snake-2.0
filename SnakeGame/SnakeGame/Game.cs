@@ -17,8 +17,7 @@ namespace SnakeGame
         public List<Segment> Walls { get; set; }
         public List<Segment> theSnake { get; set; }
         public List<Segment> Fruits { get; set; }
-        //public static System.Windows.Forms.Timer myTimer;
-        
+
 
         public int last_posX;
         public int last_posY;
@@ -26,7 +25,6 @@ namespace SnakeGame
         public int direction = RIGHT;
 
         public const int square = 25;
-
         public int[,] grid = new int[square+1, square+1];
 
         public char key;
@@ -58,7 +56,6 @@ namespace SnakeGame
         }
         public void Move_Snake()
         {
-            //show_grid();
             foreach(Segment S in theSnake)
             {
                 S.last_posX = S.get_posX();

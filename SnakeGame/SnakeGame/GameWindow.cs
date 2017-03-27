@@ -21,8 +21,7 @@ namespace SnakeGame
         public const double HARD_SPEED = 0.5;
 
         Graphics g;
-
-        Image bg = Image.FromFile(@"..\..\Images\bg.png");
+        
         Image snakebody = Image.FromFile(@"..\..\Images\snakebody.png");
         Image snakeheadup = Image.FromFile(@"..\..\Images\snakeheadtoup.png");
         Image snakeheaddown = Image.FromFile(@"..\..\Images\snakeheadtobottom.png");
@@ -73,7 +72,6 @@ namespace SnakeGame
         private void TimerEventProcessor(Object myObject,
                                                 EventArgs myEventArgs)
         {
-            //Console.WriteLine(string.Format("TICK"));
             myTimer.Stop();
 
             /*********************************************
@@ -83,8 +81,6 @@ namespace SnakeGame
                 game.update_snake();
             else
                 myTimer.Stop();
-            //game.Move_Snake();
-            //game.Refresh();
             panel1.Invalidate();
             ///// TO DO
 
@@ -101,43 +97,25 @@ namespace SnakeGame
             {
                 case Keys.Right:
                     Debug.WriteLine("KeypressedR");
-                    //MessageBox.Show("You pressed R arrow key");
-
-                    //game.TickRefresh();
                     if (game.direction != LEFT)
                         game.direction = RIGHT;
-
                     return true;
                 case Keys.Left:
                     Debug.WriteLine("KeypressedL");
-                    //MessageBox.Show("You pressed Left arrow key");
-
-                    //game.TickRefresh();
-
                     if (game.direction != RIGHT)
                         game.direction = LEFT;
-
                     return true;
                 case Keys.Up:
                     Debug.WriteLine("KeypressedU");
-                    //MessageBox.Show("You pressed U arrow key");
 
                     if (game.direction != DOWN)
                         game.direction = UP;
-
-                    //game.TickRefresh();
-
                     return true;
                 case Keys.Down:
                     Debug.WriteLine("KeypressedD");
 
                     if (game.direction != UP)
                         game.direction = DOWN;
-                    //MessageBox.Show("You pressed D arrow key");
-
-                    //game.TickRefresh();
-
-                    // DO WHAT YOU NEED
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
@@ -146,9 +124,7 @@ namespace SnakeGame
 
         private void buttonScores_Click(object sender, EventArgs e)
         {
-            myTimer.Stop();
             ScoreForm score = new ScoreForm();
-            //  Score.SaveData(ScoreForm.SCORE_FILENAME);
             Score.LoadData(ScoreForm.SCORE_FILENAME);
             score.ViewUpdate();
 
@@ -181,16 +157,11 @@ namespace SnakeGame
             myTimer.Enabled = true;
 
         }
-
-        //private void panel1_Paint(object sender, PaintEventArgs e)
+        
         private void game_Paint(object sender, PaintEventArgs e)
         {
-            panel1.BackColor = Color.Black;
-            lblScore.Text = "Score : " + game.score.ToString();
             g = e.Graphics;
-            // g.Clear(Color.Black);
-
-            //game.theSnake[0];
+            lblScore.Text = "Score : " + game.score.ToString();
 
             switch (game.direction)
             {
@@ -210,38 +181,19 @@ namespace SnakeGame
 
             foreach (Segment S in (game.theSnake).Skip(1))
             {
-                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                //S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
-                //game.Controls.Add(S);
                 g.DrawImage(snakebody, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
             foreach (Segment S in game.Walls)
             {
-                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                //S.Image = Image.FromFile(@"..\..\Images\wall.png");
-                //game.Controls.Add(S);
                 g.DrawImage(wall, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
             foreach (Segment S in game.Fruits)
             {
-                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                // S.Image = Image.FromFile(@"..\..\Images\food.png");
-                //game.Controls.Add(S);
                 g.DrawImage(fruit, (S.get_posY() * 20), (S.get_posX() * 20));
             }
 
-            for (int i = 0; i < 25; i++)
-            {
-                for (int j = 0; j < 25; j++)
-                {
-                    if (game.grid[i, j] == 0)
-                    {
-                        g.DrawImage(bg, (i * 20), (j * 20));
-                    }
-                }
-            }
         }
     }
 }
