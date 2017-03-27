@@ -39,10 +39,10 @@
             // 
             // buttonEasy
             // 
-            this.buttonEasy.Location = new System.Drawing.Point(48, 313);
-            this.buttonEasy.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEasy.Location = new System.Drawing.Point(64, 385);
+            this.buttonEasy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEasy.Name = "buttonEasy";
-            this.buttonEasy.Size = new System.Drawing.Size(115, 37);
+            this.buttonEasy.Size = new System.Drawing.Size(153, 46);
             this.buttonEasy.TabIndex = 0;
             this.buttonEasy.Text = "Easy";
             this.buttonEasy.UseVisualStyleBackColor = true;
@@ -50,10 +50,10 @@
             // 
             // buttonHard
             // 
-            this.buttonHard.Location = new System.Drawing.Point(193, 313);
-            this.buttonHard.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHard.Location = new System.Drawing.Point(257, 385);
+            this.buttonHard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonHard.Name = "buttonHard";
-            this.buttonHard.Size = new System.Drawing.Size(108, 37);
+            this.buttonHard.Size = new System.Drawing.Size(144, 46);
             this.buttonHard.TabIndex = 1;
             this.buttonHard.Text = "Hard";
             this.buttonHard.UseVisualStyleBackColor = true;
@@ -62,40 +62,43 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(48, 73);
+            this.pictureBox1.Location = new System.Drawing.Point(64, 90);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(253, 231);
+            this.pictureBox1.Size = new System.Drawing.Size(337, 284);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(13, 12);
+            this.textBox1.Location = new System.Drawing.Point(17, 15);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 29);
+            this.textBox1.Size = new System.Drawing.Size(199, 34);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "A Snake Game";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(48, 47);
+            this.textBox2.Location = new System.Drawing.Point(64, 58);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(219, 20);
+            this.textBox2.Size = new System.Drawing.Size(291, 22);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "by Haikal Pierre, Pau Mégane, Rahier Lucas";
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 361);
+            this.ClientSize = new System.Drawing.Size(463, 444);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonHard);
             this.Controls.Add(this.buttonEasy);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Menu";
             this.Text = "Snake Game Menu";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 using ScoreLibrary;
@@ -11,11 +12,67 @@ namespace SnakeGame
     {
         Game game;
 
+        public const int UP = 1;
+        public const int DOWN = 2;
+        public const int RIGHT = 3;
+        public const int LEFT = 4;
+
+        public const int EASY_SPEED = 2;
+        public const int HARD_SPEED = 1;
+
+        public static System.Windows.Forms.Timer myTimer;
+
         public GameWindow(String mode)
         {
-            InitializeComponent();
+           InitializeComponent(mode);
 
-            game = new Game(mode);
+
+            /**********
+             * Timer **
+             * *******/
+
+
+            myTimer = new System.Windows.Forms.Timer();
+
+            /* Adds the event and the event handler for the method that will 
+         process the timer event to the timer. */
+            myTimer.Tick += new EventHandler(TimerEventProcessor);
+
+            // Sets the timer interval to 2 seconds if mode is EASY, 1 second if mode is HARD.
+            switch (mode)
+            {
+                case "EASY":
+                    myTimer.Interval = (int)((float)(1000) * (EASY_SPEED));
+                    break;
+                case "HARD":
+                    myTimer.Interval = (int)((float)(1000) * (HARD_SPEED));
+                    break;
+            }
+
+
+            myTimer.Start();
+
+        }
+
+
+        // This is the method to run when the timer is raised.
+        private void TimerEventProcessor(Object myObject,
+                                                EventArgs myEventArgs)
+        {
+            //Console.WriteLine(string.Format("TICK"));
+            myTimer.Stop();
+
+            /*********************************************
+             *  Moves the snake in the direction it is in.
+             *  ******************************************/
+            
+            game.Move_Snake();
+            game.Refresh();
+            ///// TO DO
+
+
+            // Restarts the timer
+            myTimer.Enabled = true;
 
 
         }
@@ -30,7 +87,9 @@ namespace SnakeGame
                     Debug.WriteLine("KeypressedR");
                     //MessageBox.Show("You pressed R arrow key");
 
-                    game.TickRefresh();
+                    //game.TickRefresh();
+
+                    game.direction = RIGHT;
 
                     return true;
                 case Keys.Left:
@@ -38,7 +97,9 @@ namespace SnakeGame
                     Debug.WriteLine("KeypressedL");
                     //MessageBox.Show("You pressed Left arrow key");
 
-                    game.TickRefresh();
+                    //game.TickRefresh();
+
+                    game.direction = LEFT;
 
                     return true;
                 case Keys.Up:
@@ -46,15 +107,19 @@ namespace SnakeGame
                     Debug.WriteLine("KeypressedU");
                     //MessageBox.Show("You pressed U arrow key");
 
-                    game.TickRefresh();
+                    game.direction = UP;
+
+                    //game.TickRefresh();
 
                     return true;
                 case Keys.Down:
                     key = 'D';
                     Debug.WriteLine("KeypressedD");
+
+                    game.direction = DOWN;
                     //MessageBox.Show("You pressed D arrow key");
 
-                    game.TickRefresh();
+                    //game.TickRefresh();
 
                     // DO WHAT YOU NEED
                     return true;
@@ -79,5 +144,32 @@ namespace SnakeGame
             SEF.Show();
         }
 
+        //private void panel1_Paint(object sender, PaintEventArgs e)
+        private void game_Paint(object sender, PaintEventArgs e)
+        {
+            game.BackColor = Color.Black;
+
+            foreach(Segment S in game.theSnake)
+            {
+                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
+                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\snakebody.png");
+                game.Controls.Add(S);
+            }
+
+            foreach (Segment S in game.Walls)
+            {
+                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
+                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\wall.png");
+                game.Controls.Add(S);
+            }
+
+            foreach (Segment S in game.Fruits)
+            {
+                //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
+                S.Image = Image.FromFile(@"C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\Images\food.png");
+                game.Controls.Add(S);
+            }
+
+        }
     }
 }

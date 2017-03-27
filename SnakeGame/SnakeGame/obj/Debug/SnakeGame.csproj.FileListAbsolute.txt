@@ -43,3 +43,7 @@ C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\Snak
 C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\SnakeGame.pdb
 C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\ScoreLibrary.dll
 C:\Users\PIERRE\Desktop\Travail\ING4\Microsoft C#\Snake\Snake-3.0\SnakeGame\SnakeGame\bin\Debug\ScoreLibrary.pdb
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.ScoreEntryForm.resources
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\obj\Debug\SnakeGame.ScoreForm.resources
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\bin\Debug\ScoreLibrary.dll
+C:\Users\Megou\ING4\Csharp\ProjetGit\SnakeGame\SnakeGame\bin\Debug\ScoreLibrary.pdb

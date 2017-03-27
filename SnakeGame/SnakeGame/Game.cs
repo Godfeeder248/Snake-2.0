@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using static SnakeGame.GameWindow;
 
 /// <summary>
 ///  10x10 px
@@ -15,12 +16,16 @@ namespace SnakeGame
         public String mode { get; set; }
         public List<Segment> Walls { get; set; }
         public List<Segment> theSnake { get; set; }
-        public static System.Windows.Forms.Timer myTimer;
+        public List<Segment> Fruits { get; set; }
+        //public static System.Windows.Forms.Timer myTimer;
 
-        public const int EASY_SPEED = 2;
-        public const int HARD_SPEED= 1;
+       // public const int EASY_SPEED = 2;
+       // public const int HARD_SPEED= 1;
 
-        private const int square = 30;
+        public int direction = RIGHT;
+
+        public const int square = 30;
+
         public int[,] grid = new int[square, square];
 
         public char key;
@@ -29,7 +34,9 @@ namespace SnakeGame
         {
             this.mode = mode;
             theSnake = new List<Segment>();
-            
+            Walls = new List<Segment>();
+            Fruits = new List<Segment>();
+
             Random axis = new Random();
 
             // Création de la grille
@@ -44,7 +51,7 @@ namespace SnakeGame
 
             for (int i = 0; i < 10; i++)
                 Build_Wall(square, grid);
-            Put_fruit(square, grid);
+                Put_fruit(square, grid);
             foreach (Segment S in theSnake)
                 grid[S.get_posX(), S.get_posY()] = S.segType;
 
@@ -52,68 +59,49 @@ namespace SnakeGame
 
 
 
-            /**********
-             * Timer **
-             * *******/
-
-
-            myTimer = new System.Windows.Forms.Timer();
-
-            /* Adds the event and the event handler for the method that will 
-         process the timer event to the timer. */
-            myTimer.Tick += new EventHandler(TimerEventProcessor);
-
-            // Sets the timer interval to 2 seconds if mode is EASY, 1 second if mode is HARD.
-            switch (mode)
-            {
-                case "EASY":
-                   myTimer.Interval = (int)((float)(1000) * (EASY_SPEED));
-                    break;
-                case "HARD":
-                    myTimer.Interval = (int)((float)(1000) * (HARD_SPEED));
-                    break;
-            }
-
-
-            myTimer.Start();
           
         }
 
-        // This is the method to run when the timer is raised.
-        private static void TimerEventProcessor(Object myObject,
-                                                EventArgs myEventArgs)
+
+        public void Move_Snake()
         {
-            //Console.WriteLine(string.Format("TICK"));
-            myTimer.Stop();
+            switch (direction){
+                case UP:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posX() - 1));
+                        if (S.get_posX() < 0)
+                            S.set_posX(square);
+                    }
+                       
+                    break;
+                case DOWN:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posX() + 1));
+                        if (S.get_posX() == square)
+                            S.set_posX(0);
+                    }
 
-            /*********************************************
-             *  Moves the snake in the direction it is in.
-             *  ******************************************/
+                    break;
+                case RIGHT:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posY() + 1));
+                        if (S.get_posY() == square)
+                            S.set_posY(0);
+                    }
+                    break;
+                case LEFT:
+                    foreach (Segment S in theSnake)
+                    {
+                        S.set_posX((S.get_posY() - 1));
+                        if (S.get_posY() < 0)
+                            S.set_posY(square);
+                    }
+                    break;
+            }
 
-            ///// TO DO
-
-
-            // Restarts the timer
-            myTimer.Enabled = true;
-
-
-        }
-
-        
-        public void TickRefresh()
-        {
-           // Console.WriteLine(string.Format("Boom changement de tick"));
-            myTimer.Stop();
-
-            /******************************************************
-             *  Moves the snake in the direction the user pressed.
-             *  ***************************************************/
-
-            ///// TO DO
-
-
-            // Restarts the timer
-            myTimer.Enabled = true;
 
         }
 
@@ -122,15 +110,23 @@ namespace SnakeGame
         public void Grow_Snake(int x, int y) //adds a segment to the snake when it eats a fruit.
         {
             theSnake.Add(new Segment(x,y,Segment.SNAKE_BODY));
+            this.Build_Wall(square,grid);
+            this.Put_fruit(square, grid);
         }
         public void Build_Wall(int range, int[,] grid) //adds a wall on the list of wall when the snake eats a fruit
         {
             Random axis = new Random();
             int x = axis.Next(0, range);
             int y = axis.Next(0, range);
+
             System.Console.WriteLine("Grid_Wall : " + grid[x, y]);
+
+
             if (grid[x, y] == 0)
+            {
                 grid[x, y] = 3;
+                Walls.Add(new Segment(x, y, Segment.WALL));
+            }
             else
                 Build_Wall(range, grid);
         }
@@ -140,8 +136,12 @@ namespace SnakeGame
             int x = axis.Next(0, range);
             int y = axis.Next(0, range);
             System.Console.WriteLine("Grid_Fruit : " + grid[x, y]);
+
             if (grid[x, y] == 0)
+            {
                 grid[x, y] = 2;
+                Fruits.Add(new Segment(x, y, Segment.FRUIT));
+            }
             else
                 Put_fruit(range, grid);
         }
