@@ -20,11 +20,26 @@ namespace SnakeGame
         public const int EASY_SPEED = 2;
         public const int HARD_SPEED = 1;
 
+        Graphics g;
+
+        Image snakebody = Image.FromFile(@"..\..\Images\snakebody.png");
+        Image snakeheadup = Image.FromFile(@"..\..\Images\snakeheadtoup.png");
+        Image snakeheaddown = Image.FromFile(@"..\..\Images\snakeheadtobottom.png");
+        Image snakeheadleft = Image.FromFile(@"..\..\Images\snakeheadtoleft.png");
+        Image snakeheadright = Image.FromFile(@"..\..\Images\snakeheadtoright.png");
+
+        Image wall = Image.FromFile(@"..\..\Images\wall.png");
+        Image fruit = Image.FromFile(@"..\..\Images\food.png");
+
+
         public static System.Windows.Forms.Timer myTimer;
 
         public GameWindow(String mode)
         {
            InitializeComponent(mode);
+
+
+            this.game = new Game(mode);
 
             /**********
              * Timer **
@@ -34,7 +49,7 @@ namespace SnakeGame
 
             /* Adds the event and the event handler for the method that will 
             process the timer event to the timer. */
-            myTimer.Tick += new EventHandler(game_Paint);
+            myTimer.Tick += new EventHandler(TimerEventProcessor);
 
             // Sets the timer interval to 2 seconds if mode is EASY, 1 second if mode is HARD.
             switch (mode)
@@ -65,7 +80,8 @@ namespace SnakeGame
              *  ******************************************/
             
             game.Move_Snake();
-            game.Refresh();
+            //game.Refresh();
+            panel1.Invalidate();
             ///// TO DO
 
 
@@ -141,36 +157,45 @@ namespace SnakeGame
         }
 
         //private void panel1_Paint(object sender, PaintEventArgs e)
-        private void game_Paint(object sender, EventArgs e)
+        private void game_Paint(object sender, PaintEventArgs e)
         {
             myTimer.Stop();
-            game.BackColor = Color.Black;
-            foreach(Segment S in game.theSnake)
+            panel1.BackColor = Color.Black;
+
+
+            g = e.Graphics;
+            g.Clear(Color.Black);
+
+            foreach (Segment S in game.theSnake)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
+                //S.Image = Image.FromFile(@"..\..\Images\snakebody.png");
                 System.Console.WriteLine("1");
-                game.Controls.Add(S);
+                //game.Controls.Add(S);
+                g.DrawImage(snakebody, (S.get_posX() * 20), (S.get_posY() * 20));
             }
 
             foreach (Segment S in game.Walls)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                S.Image = Image.FromFile(@"..\..\Images\wall.png");
-                game.Controls.Add(S);
+                //S.Image = Image.FromFile(@"..\..\Images\wall.png");
+                //game.Controls.Add(S);
                 System.Console.WriteLine("2");
+                g.DrawImage(wall, (S.get_posX() * 20), (S.get_posY() * 20));
             }
 
             foreach (Segment S in game.Fruits)
             {
                 //S.Location = new System.Drawing.Point((S.get_posX() * 10), (S.get_posY() * 10));
-                S.Image = Image.FromFile(@"..\..\Images\food.png");
+               // S.Image = Image.FromFile(@"..\..\Images\food.png");
                 System.Console.WriteLine("3");
-                game.Controls.Add(S);
+                //game.Controls.Add(S);
+                g.DrawImage(fruit, (S.get_posX() * 20), (S.get_posY() * 20));
             }
             game.Move_Snake();
             ///// TO DO
 
+            
             // Restarts the timer
             myTimer.Enabled = true;
         }

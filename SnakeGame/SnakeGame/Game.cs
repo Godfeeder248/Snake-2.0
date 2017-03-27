@@ -11,7 +11,7 @@ using static SnakeGame.GameWindow;
 
 namespace SnakeGame
 {
-    public class Game: Panel
+    public class Game
     {
         public String mode { get; set; }
         public List<Segment> Walls { get; set; }
@@ -19,6 +19,7 @@ namespace SnakeGame
         public List<Segment> Fruits { get; set; }
         //public static System.Windows.Forms.Timer myTimer;
         
+
         public int last_posX;
         public int last_posY;
 
@@ -73,35 +74,35 @@ namespace SnakeGame
                 case UP:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posX((S.get_posX() - 1));
-                        if (S.get_posX() < 0)
-                            S.set_posX(square-1);
+                        S.set_posY((S.get_posY() - 1));
+                        if (S.get_posY() < 0)
+                            S.set_posY(square-1);
                     }
                        
                     break;
                 case DOWN:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posX((S.get_posX() + 1));
-                        if (S.get_posX() == square)
-                            S.set_posX(0);
+                        S.set_posY((S.get_posY() + 1));
+                        if (S.get_posY() == square)
+                            S.set_posY(0);
                     }
 
                     break;
                 case RIGHT:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posY((S.get_posY() + 1));
-                        if (S.get_posY() == square)
-                            S.set_posY(0);
+                        S.set_posX((S.get_posX() + 1));
+                        if (S.get_posX() == square)
+                            S.set_posX(0);
                     }
                     break;
                 case LEFT:
                     foreach (Segment S in theSnake)
                     {
-                        S.set_posY((S.get_posY() - 1));
-                        if (S.get_posY() < 0)
-                            S.set_posY(square-1);
+                        S.set_posX((S.get_posX() - 1));
+                        if (S.get_posX() < 0)
+                            S.set_posX(square-1);
                     }
                     break;
             }
@@ -174,7 +175,7 @@ namespace SnakeGame
             int x = rand.Next(0, square);
             int y = rand.Next(0, square);
 
-            if (theSnake[0].get_posX() == 2)
+            if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2)
             {
                 if (grid[x, y] == 0)
                 {

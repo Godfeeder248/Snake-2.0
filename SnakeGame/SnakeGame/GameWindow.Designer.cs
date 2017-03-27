@@ -31,8 +31,7 @@
             this.buttonNewGame = new System.Windows.Forms.Button();
             this.buttonScores = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
-            //this.panel1 = new System.Windows.Forms.Panel();
-            this.game = new Game(mode);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // buttonNewGame
@@ -67,21 +66,21 @@
             this.buttonPause.UseVisualStyleBackColor = true;
             this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click_1);
             // 
-            // game
+            // panel1
             //
-            this.game.Location = new System.Drawing.Point(12, 22);
-            this.game.Name = "game";
-            this.game.Size = new System.Drawing.Size(700, 700);
-            this.game.TabIndex = 3;
-            this.game.Paint += new System.Windows.Forms.PaintEventHandler(this.game_Paint);
+            this.panel1.Location = new System.Drawing.Point(12, 22);
+            this.panel1.Name = "game";
+            this.panel1.Size = new System.Drawing.Size(700, 700);
+            this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.game_Paint);
             // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 750);
-            this.Controls.Add(this.game);
-            //this.Controls.Add(this.panel1);
+            //this.Controls.Add(this.game);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonPause);
             this.Controls.Add(this.buttonScores);
             this.Controls.Add(this.buttonNewGame);
@@ -97,6 +96,6 @@
         private System.Windows.Forms.Button buttonNewGame;
         private System.Windows.Forms.Button buttonScores;
         private System.Windows.Forms.Button buttonPause;
-        //private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
