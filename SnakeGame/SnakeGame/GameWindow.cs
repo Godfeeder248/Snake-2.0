@@ -152,8 +152,8 @@ namespace SnakeGame
 
         private void buttonPause_Click_1(object sender, EventArgs e)
         {
-            ScoreEntryForm SEF = new ScoreEntryForm();
-            SEF.Show();
+           // ScoreEntryForm SEF = new ScoreEntryForm();
+            //SEF.Show();
         }
 
         //private void panel1_Paint(object sender, PaintEventArgs e)

@@ -32,6 +32,11 @@ namespace SnakeGame
             this.Valider.Enabled = false;
         }
 
+        public ScoreEntryForm(int score)
+        {
+            labelScore.Text = score.ToString();
+        }
+
         #endregion Constructor(s)
 
         #region Event management

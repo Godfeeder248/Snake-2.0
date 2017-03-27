@@ -33,6 +33,8 @@ namespace SnakeGame
 
         public int iteration = 0;
 
+        public int score = 0;
+
         public Game(String mode)
         {
             this.mode = mode;
@@ -175,14 +177,21 @@ namespace SnakeGame
             int x = rand.Next(0, square);
             int y = rand.Next(0, square);
 
+<<<<<<< HEAD
             if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2)
+=======
+            if ((grid[theSnake[0].get_posX(), theSnake[0].get_posY()] == 2))
+>>>>>>> 7211c2748aa160b5c72034be3c4c1fce246ebf68
             {
                 if (grid[x, y] == 0)
                 {
                     Fruits[0].set_posX(x);
                     Fruits[0].set_posY(y);
                     Grow_Snake(last_posX, last_posY);
+                    score = score + 100;
+
                     Build_Wall();
+
                 }
                 else
                     eat_fruit();
@@ -193,13 +202,16 @@ namespace SnakeGame
             if (grid[theSnake[0].get_posX(), theSnake[0].get_posY()] != 0 ||
                 grid[theSnake[0].get_posX(), theSnake[0].get_posY()] != 2)
             {
-
+                ScoreEntryForm SEF = new ScoreEntryForm(score);
+                SEF.Show();
             }
         }
         public void update_snake()
         {
+            score = score + 1;
             Move_Snake();
             eat_fruit();
+
             die();
         }
     }
