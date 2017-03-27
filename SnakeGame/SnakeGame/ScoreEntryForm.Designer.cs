@@ -33,11 +33,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Valider = new System.Windows.Forms.Button();
             this.labelScore = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PseudoEntry
             // 
-            this.PseudoEntry.Location = new System.Drawing.Point(15, 82);
+            this.PseudoEntry.Location = new System.Drawing.Point(15, 95);
             this.PseudoEntry.Name = "PseudoEntry";
             this.PseudoEntry.Size = new System.Drawing.Size(142, 20);
             this.PseudoEntry.TabIndex = 0;
@@ -46,24 +50,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 54);
+            this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 13);
+            this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Veuillez rentrer votre Pseudo : ";
+            this.label1.Text = "Veuillez rentrer votre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 21);
+            this.label2.Location = new System.Drawing.Point(12, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 13);
+            this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Bravo votre Score est de :";
+            this.label2.Text = "Bravo votre";
             // 
             // Valider
             // 
-            this.Valider.Location = new System.Drawing.Point(178, 81);
+            this.Valider.Location = new System.Drawing.Point(178, 95);
             this.Valider.Name = "Valider";
             this.Valider.Size = new System.Drawing.Size(71, 21);
             this.Valider.TabIndex = 3;
@@ -74,17 +78,61 @@
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(191, 21);
+            this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScore.Location = new System.Drawing.Point(175, 38);
             this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(25, 13);
+            this.labelScore.Size = new System.Drawing.Size(35, 17);
             this.labelScore.TabIndex = 4;
             this.labelScore.Text = "356";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(41, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Zut! Vous êtes mort!";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(110, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Pseudo : ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(69, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Score";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(106, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "est de :";
             // 
             // ScoreEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 114);
+            this.ClientSize = new System.Drawing.Size(261, 130);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.Valider);
             this.Controls.Add(this.label2);
@@ -104,5 +152,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Valider;
         private System.Windows.Forms.Label labelScore;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
