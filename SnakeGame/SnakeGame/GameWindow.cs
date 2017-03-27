@@ -130,6 +130,16 @@ namespace SnakeGame
 
             score.Show();
         }
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+            System.Console.WriteLine("New Game");
+            this.game.eat_fruit();
+            this.game.Walls.Clear();
+            this.game.theSnake.Clear();
+            this.game.Grow_Snake(10, 10);
+            this.game.score = 0;
+            this.game.build_grid();
+        }
 
         private void buttonPause_Click_1(object sender, EventArgs e)
         {
@@ -150,12 +160,9 @@ namespace SnakeGame
                 {
                     isPaused = false;
                 }
-
             }
-
             // Restarts the timer
             myTimer.Enabled = true;
-
         }
         
         private void game_Paint(object sender, PaintEventArgs e)
